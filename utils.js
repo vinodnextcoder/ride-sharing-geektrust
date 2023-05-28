@@ -121,7 +121,6 @@ class RideManager {
       }
     }
     if (ride) {
-      ride = ride.replace(268.36,268.35)
       console.log(ride);
     }
   }
