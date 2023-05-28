@@ -1,3 +1,6 @@
+# geektrust ride sharing
+* Your task is to build a solution that will help to match riders with drivers based on their location and generate a bill for the ride.
+
 # Pre-requisites
 * NodeJS 12.6.0/14.15.4/16.10.0
 * npm
@@ -15,18 +18,9 @@ Internally both the scripts run the following commands
 
 `npm start --silent sample_input/input1.txt`
 
-We expect your program to take the location to the text file as parameter. Input needs to be read from a text file, and output should be printed to the console. The text file will contain only commands in the format prescribed by the respective problem.
-
-This main file, main.go should receive in the command line argument and parse the file passed in. Once the file is parsed and the application processes the commands, it should only print the output.
-
- # Running the code for multiple test cases
-
- Please fill `input1.txt` and `input2.txt` with the input commands and use those files in `run.bat` or `run.sh`. Replace `./geektrust sample_input/input1.txt` with `./geektrust sample_input/input2.txt` to run the test case from the second file. 
 
  # How to execute the unit tests
 
  Mocha based test cases are executed with the following command from the root folder
 `mocha test`
 
-Jest based test cases are executed with the following command from the root folder
-`jest`
