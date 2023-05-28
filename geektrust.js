@@ -1,48 +1,42 @@
-const fs = require("fs");
-const RideManager = require('./utils');
-
-// Defining class using es6
-const rideManager = new RideManager();
+const RideManager = require("./utils");
+const fs = require('fs')
 class Vehicle {
-  constructor(dataInput) {
-    this.dataInput = dataInput;
+  constructor() {
+    this.rideManager = new RideManager();
   }
-  main(dataInput) {
-    var inputLines = dataInput.toString().split("\n");
-    inputLines = inputLines.filter((s) => s.replace(/\s+/g, "").length !== 0);
-    
-    for (let i = 0; i < inputLines.length; i++) {
-      if (inputLines) {
-        let input = inputLines[i].split(" ");
-        switch (input[0]) {
-          case "ADD_DRIVER":
-            rideManager.addDriver(input[1], parseInt(input[2]), parseInt(input[3]));
-            break;
-          case "ADD_RIDER":
-            rideManager.addRider(input[1], parseInt(input[2]), parseInt(input[3]));
-            break;
-          case "MATCH":
-            rideManager.match(input[1].trim());
-            break;
 
-          case "START_RIDE":
-            rideManager.startRide(input[1], input[2],input[3].trim());
-            break;
-          case "STOP_RIDE":
-            rideManager.stopRide(input[1], input[2], input[3], parseInt(input[4].trim()));
-            break;
-          case "BILL":
-            rideManager.billRide(input[1])
-            break;
-        }
+  main(dataInput) {
+    const inputLines = dataInput.toString().split("\n").filter((s) => s.replace(/\s+/g, "").length !== 0);
+
+    for (let i = 0; i < inputLines.length; i++) {
+      const input = inputLines[i].split(" ");
+      const [command, ...args] = input;
+
+      switch (command) {
+        case "ADD_DRIVER":
+          this.rideManager.addDriver(args[0], parseInt(args[1]), parseInt(args[2]));
+          break;
+        case "ADD_RIDER":
+          this.rideManager.addRider(args[0], parseInt(args[1]), parseInt(args[2]));
+          break;
+        case "MATCH":
+          this.rideManager.match(args[0].trim());
+          break;
+        case "START_RIDE":
+          this.rideManager.startRide(args[0], args[1], args[2].trim());
+          break;
+        case "STOP_RIDE":
+          this.rideManager.stopRide(args[0], args[1], args[2], parseInt(args[3].trim()));
+          break;
+        case "BILL":
+          this.rideManager.billRide(args[0]);
+          break;
       }
     }
   }
 }
 
+const vehicle = new Vehicle();
 const filename = process.argv[2];
-data = fs.readFileSync(process.argv[2]).toString();
-let train1 = new Vehicle();
-train1.main(data);
-
-module.exports = RideManager;
+const data = fs.readFileSync(filename).toString();
+vehicle.main(data);
