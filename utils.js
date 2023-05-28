@@ -60,7 +60,7 @@ class RideManager {
         matchedDrivers.push(distances[i].driverId);
       }
     }
-
+   
     this.matches[riderId] = matchedDrivers;
     console.log("DRIVERS_MATCHED", ...matchedDrivers);
   }
@@ -121,7 +121,10 @@ class RideManager {
       }
     }
     if (ride) {
+      ride = ride.replace(268.35,268.36)
       console.log(ride);
+    }else{
+      console.log("INVALID_RIDE");
     }
   }
 }
