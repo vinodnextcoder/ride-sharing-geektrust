@@ -1,5 +1,5 @@
 # geektrust ride sharing
-# Your task is to build a solution that will help to match riders with drivers based on their location and generate a bill for the ride.
+* Your task is to build a solution that will help to match riders with drivers based on their location and generate a bill for the ride.
 
 # Pre-requisites
 * NodeJS 12.6.0/14.15.4/16.10.0
